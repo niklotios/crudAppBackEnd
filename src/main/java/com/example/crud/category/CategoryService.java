@@ -35,8 +35,19 @@ public class CategoryService {
         boolean exists = categoryRepository.existsById(categoryId);
         if (!exists){
             throw new IllegalStateException(
-                    "student with id " + categoryId + "does not exist");
+                    "category with id " + categoryId + "does not exist");
         }
         categoryRepository.deleteById(categoryId);
+    }
+
+    public void updateCategoryName(Long categoryId, String newCategoryName) {
+        Optional<Category> optionalCategory = categoryRepository.findById(categoryId);
+        if (optionalCategory.isPresent()){
+            Category category = optionalCategory.get();
+            category.setCategoryName(newCategoryName);
+            categoryRepository.save(category);
+        }else {
+            throw new CategoryNotFoundException("Category not found with ID" + categoryId);
+        }
     }
 }

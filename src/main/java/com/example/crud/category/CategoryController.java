@@ -1,6 +1,7 @@
 package com.example.crud.category;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +31,21 @@ public class CategoryController {
     public void deleteCategory(@PathVariable("categoryId") Long categoryId){
         categoryService.deleteCategory(categoryId);
 
+    }
+
+    @PutMapping(path = "{categoryId}")
+    public ResponseEntity<String> updateCategoryName(
+            @PathVariable Long categoryId,
+            @RequestBody String newCategoryName
+    ){
+        try{
+            categoryService.updateCategoryName(categoryId,newCategoryName);
+            return ResponseEntity.ok("Category updated");
+        }catch (CategoryNotFoundException e){
+            return ResponseEntity.notFound().build();
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body("Error updateing category");
+        }
     }
 
 }

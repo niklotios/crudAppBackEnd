@@ -50,4 +50,9 @@ public class CategoryService {
             throw new CategoryNotFoundException("Category not found with ID" + categoryId);
         }
     }
+
+    public Long findCategoryIdByName(String categoryName) {
+        Optional<Category> category = categoryRepository.findByCategoryName(categoryName);
+        return category.map(Category::getCategoryId).orElse(null);
+    }
 }

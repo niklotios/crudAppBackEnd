@@ -34,7 +34,7 @@ public class CategoryController {
 
     }
 
-    @PutMapping(path = "{categoryId}")
+    @PutMapping(path = "{categoryId}", produces = "text/plain")
     public ResponseEntity<String> updateCategoryName(
             @PathVariable Long categoryId,
             @RequestBody String newCategoryName
@@ -45,8 +45,14 @@ public class CategoryController {
         }catch (CategoryNotFoundException e){
             return ResponseEntity.notFound().build();
         }catch (Exception e){
-            return ResponseEntity.badRequest().body("Error updateing category");
+            return ResponseEntity.badRequest().body("Error updating category");
         }
     }
+
+    @GetMapping("/findIdByName/{categoryName}")
+    public Long findCategoryIdByName(@PathVariable String categoryName) {
+        return categoryService.findCategoryIdByName(categoryName);
+    }
+
 
 }

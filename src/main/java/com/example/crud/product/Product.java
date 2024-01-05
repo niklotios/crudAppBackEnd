@@ -42,6 +42,10 @@ public class Product {
         this.category = category;
     }
 
+    public Long getProductId() {
+        return productId;
+    }
+
     public String getProductName() {
         return productName;
     }

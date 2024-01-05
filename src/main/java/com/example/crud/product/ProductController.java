@@ -1,10 +1,7 @@
 package com.example.crud.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +16,14 @@ public class ProductController {
     public List<Product> getProductsByCategory(@PathVariable String categoryName){
         return productService.getProductsByCategory(categoryName);
     }
+
+    @DeleteMapping(path="{productId}")
+    public void deleteProduct(@PathVariable("productId") Long productId){
+        productService.deleteProduct(productId);
+    }
+
+    @PostMapping
+    public void registerNewProduct(@RequestBody Product product) {productService.addNewProduct(product);}
 
 
 

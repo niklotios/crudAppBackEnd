@@ -9,18 +9,18 @@ import java.util.List;
 @Configuration
 public class CategoryConfig {
 
-    @Bean
-    CommandLineRunner commandLineRunner(CategoryRepository repository){
-        return args ->{
-             Category xartika = new Category (
-                    "χαρτικά"
-            );
-
-             Category trofima_psygeiou = new Category (
-                    "τρόφιμα ψυγείου"
-            );
-
-             repository.saveAll(List.of(xartika,trofima_psygeiou));
-        };
-    }
+//    @Bean
+//    CommandLineRunner commandLineRunner(CategoryRepository repository){
+//        return args ->{
+//             Category xartika = new Category (
+//                    "χαρτικά"
+//            );
+//
+//             Category trofima_psygeiou = new Category (
+//                    "τρόφιμα ψυγείου"
+//            );
+//
+//             repository.saveAll(List.of(xartika,trofima_psygeiou));
+//        };
+//    }
 }

@@ -1,3 +1,3 @@
 # crudAppBackEnd
-Knowledge educational project in Spring Boot.
-This is the Back End for the project
+This is the Back End of my CRUD application concerning categories and products.
+Open in intelliJ IDEA and run the project.

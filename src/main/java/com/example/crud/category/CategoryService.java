@@ -55,4 +55,8 @@ public class CategoryService {
         Optional<Category> category = categoryRepository.findByCategoryName(categoryName);
         return category.map(Category::getCategoryId).orElse(null);
     }
+
+    public Category getCategoryByName(String categoryName) {
+        return categoryRepository.findByCategoryName(categoryName).orElse(null);
+    }
 }
